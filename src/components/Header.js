@@ -1,11 +1,15 @@
 import React from "react";
 import Vinted from "../assets/images/vinted-logo.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="header">
-      <div className="logo">
+      <Link to="/" className="logo">
         <img src={Vinted} alt="vinted-logo" />
+      </Link>
+      <div>
+        <input type="search" name="" id="" />
       </div>
       <div className="header-button">
         <div className="log-button">
