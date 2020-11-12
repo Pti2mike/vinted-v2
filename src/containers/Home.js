@@ -40,11 +40,13 @@ const Home = () => {
               {/* {offer.owner.account.avatar} */}
               {offer.owner.account.username}
               {/* Image */}
-              {/* {offer.product_pictures.map((list, index) => {
-                const keys = Object.keys(list);
-                console.log(keys[16]);
-                return <img key={index} src={list[keys[16]]} alt="" />;
-              })} */}
+              <div className="item-img">
+                {offer.product_pictures.map((list, index) => {
+                  const keys = Object.keys(list);
+                  console.log(keys[16]);
+                  return <img key={index} src={list[keys[16]]} alt="" />;
+                })}
+              </div>
               {offer.product_price} €
               {offer.product_details.map((list, index) => {
                 const keys = Object.keys(list);
