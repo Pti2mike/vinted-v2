@@ -7,13 +7,13 @@ const Home = () => {
   const [data, setData] = useState({}); // Permet de gérer les données
   const [isLoading, setIsLoading] = useState(true); // Permet de gérer le fait que l'objet soit vide au chargement du composant
 
-  const fectData = async () => {
+  const fetchData = async () => {
     try {
       // A terme, je devrai mettre le lien de mon URL pour le backend
       const response = await axios.get(
         "https://lereacteur-vinted-api.herokuapp.com/offers"
       );
-      console.log(response.data); // Je vérifie que je récupère les données du backend qui est un objet
+      // console.log(response.data); // Je vérifie que je récupère les données du backend qui est un objet
       setData(response.data);
       setIsLoading(false); // il faut passer ce state à false afin que la page ne se charge pas indéfiniment
     } catch (error) {
@@ -23,7 +23,7 @@ const Home = () => {
 
   useEffect(() => {
     // permet de charger les données une fois au chargement du composant
-    fectData(); // J'appelle la fonction fetchData qui va appeler le serveur
+    fetchData(); // J'appelle la fonction fetchData qui va appeler le serveur
   }, []);
 
   return isLoading ? (

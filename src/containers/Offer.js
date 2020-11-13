@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Offer = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
@@ -13,7 +14,6 @@ const Offer = () => {
       const response = await axios.get(
         `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
       );
-      console.log({ id });
       // console.log(response.data); // Retourne l'objet renseigné dans :id
       setData(response.data);
       setIsLoading(false); //il faut passer ce state à false afin que la page ne se charge pas indéfiniment
@@ -61,7 +61,7 @@ const Offer = () => {
           />
           <span>{data.owner.account.username}</span>
         </div>
-        <button>Acheter</button>
+        <Link to="">Acheter</Link>
       </div>
     </div>
   );

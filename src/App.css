@@ -67,3 +67,19 @@ button,
   border-radius: 50%;
   object-fit: cover;
 }
+
+/* Form page -> CSS to be splitted */
+
+.formulaire {
+  border: blue solid 2px;
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.form-content {
+  border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+}

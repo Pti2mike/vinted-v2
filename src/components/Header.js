@@ -13,10 +13,10 @@ const Header = () => {
       </div>
       <div className="header-button">
         <div className="log-button">
-          <button>S'inscrire</button>
-          <button>Se connecter</button>
+          <Link to="/signup">S'inscrire</Link>
+          <Link to="/login">Se connecter</Link>
         </div>
-        <button>Vends tes articles</button>
+        <Link to="">Vends tes articles</Link>
       </div>
     </header>
   );
