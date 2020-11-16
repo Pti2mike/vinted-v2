@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const history = useHistory();
 
   const handleSubmit = async (event) => {
     // console.log(event); // Je reçois bien un objet
@@ -21,6 +25,15 @@ const Signup = () => {
         }
       );
       console.log(response.data); // Retourne bien l'objet créé
+      // On vérifie si le token est retourné dans la console
+      if (response.data.token) {
+        // si oui, on modifie l'état de setUser
+        setUser(response.data.token);
+        // puis on renvoie l'utilisateur vers la homepage
+        history.push("/");
+      } else {
+        alert("Une erreur est survenue");
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -56,6 +69,7 @@ const Signup = () => {
             }}
           />
           <input type="submit" value="S'inscrire" />
+          <Link to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
         </div>
       </form>
     </div>

@@ -1,64 +1,226 @@
-header {
-  height: 60px;
-  width: 1200px;
+.header,
+.item-wrapper,
+.offer-wrapper,
+.offer-item {
+  width: 1280px;
   display: flex;
-  justify-content: space-around;
-  border: solid 2px;
+  padding: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin: auto; */
+  /* border: solid 2px red; */
 }
 
 button,
-.logo > img {
+.logo img,
+.home-help {
   cursor: pointer;
 }
 
-.logo > img {
+.logo img {
   height: 30px;
 }
 
 .header-button {
   display: flex;
+  justify-content: space-between;
+  /* background-color: green; */
+  width: 400px;
 }
 
-.log-button {
+.log-button,
+.sell-button {
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 5px 20px;
+  box-sizing: border-box;
+}
+
+.log-button,
+.home-sell button {
+  border: solid #2cb1ba 2px;
+  color: #2cb1ba;
+  box-sizing: border-box;
+  /* margin-left: 20px; */
+}
+
+.sell-button,
+.home-sell button {
+  border: solid #2cb1ba 2px;
+  background-color: #2cb1ba;
+  color: white;
+}
+
+.search {
+  /* border: solid 2px green; */
+  background-color: #f5f6f7;
+  width: 630px;
+  height: 40px;
   display: flex;
-  justify-content: space-between;
+}
+
+.searchTerm {
+  /* border: lightgreen 2px solid; */
+  background-color: #f5f6f7;
+  width: 100%;
+  border: none;
+}
+
+.home {
+  width: 1280px;
+  height: 500px;
+  /* border: solid 2px; */
+  object-fit: cover;
+}
+
+.home-sell {
+  height: 220px;
+  width: 360px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  box-sizing: border-box;
+  top: 150px;
+  left: 15px;
+}
+
+.home-sell button {
+  font-size: 16px;
+  border: solid #2cb1ba 2px;
+  background-color: #2cb1ba;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 5px 20px;
+  text-decoration: none;
+  /* margin: 50px; */
+}
+
+.home-help {
+  font-size: 14px;
+  color: #2cb1ba;
+  margin-top: 20px;
+}
+
+.item-wrapper {
+  /* background-color: yellow; */
+  /* déjà en display flex */
+  /* border: solid yellow 2px; */
+  /* justify-content: space-between;
+  flex-shrink: 0; */
+  flex-wrap: wrap;
 }
 
 .item img {
-  border: solid 2px lightblue;
-  height: 260px;
-  width: 230px;
+  /* border: solid 2px lightblue; */
+  height: 360px;
+  width: 240px;
+  box-sizing: border-box;
+  /* margin-bottom: 10px; */
 }
 
 .item {
-  border: solid 3px blue;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
+  /* border: solid 3px blue; */
+  margin-bottom: 20px;
+  margin-right: 15px;
 }
 
-.item-img {
+/* .item-img {
   display: flex;
+} */
+
+.item-avatar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.item-avatar img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.item-username {
+  margin-left: 10px;
+}
+
+.item-detail span {
+  font-weight: bold;
 }
 
 /* Offer page -> CSS to be splitted */
 
 .offer-wrapper {
   background-color: #eaedef;
-  display: flex;
+  padding: 30px;
+  /* border: solid blue 2px; */
+  /* display: flex; */
+  /* justify-content: space-around; */
+}
+
+.offer-item {
+  margin: 0 auto;
+  /* border: solid aqua 2px; */
+  padding: 20px;
   justify-content: space-around;
 }
 
 .offer-img {
-  height: 260px;
-  width: 220px;
+  height: 600px;
+  width: 460px;
+  object-fit: contain;
+}
+
+.offer-detail {
+  height: 540px;
+  width: 350px;
+  background-color: #ffffff;
+  /* border: solid black 2px; */
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.offer-user {
+  /* border: red solid 2px; */
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* box-sizing: border-box;
+  flex-wrap: wrap; */
+}
+
+.offer-user span {
+  max-width: 100%;
+}
+
+.split {
+  width: 100%;
+  height: 1px;
+  background: grey;
 }
 
 .offer-avatar {
   width: 50px;
   height: 50px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  /* justify-content: center; */
+  /* border: solid green 1px; */
+  /* width: 100%; */
 }
 
 .offer-avatar img {
@@ -66,6 +228,19 @@ button,
   height: 45px;
   border-radius: 50%;
   object-fit: cover;
+  margin-right: 10px;
+}
+
+.offer-buy {
+  font-size: 16px;
+  border: solid #2cb1ba 2px;
+  background-color: #2cb1ba;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 5px 20px;
+  text-decoration: none;
+  /* margin: 50px; */
 }
 
 /* Form page -> CSS to be splitted */

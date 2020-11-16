@@ -1,26 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
+import Publish from "./containers/Publish";
 import Header from "./components/Header";
+import Cookie from "js-cookie";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch);
 
 function App() {
+  const [token, setToken] = useState(Cookie.get("userToken") || null);
+
+  const setUser = (tokenToSet) => {
+    // est-ce que tokenToSet existe?
+    if (tokenToSet) {
+      // Créer un cookie
+      Cookie.set("userToken", tokenToSet);
+      // Je change l'état
+      setToken(tokenToSet);
+    } else {
+      // Supprimer le cookie
+      Cookie.remove("userToken");
+      // Repasse l'état du token à null
+      setToken(null);
+    }
+  };
+
   return (
     <div>
       <Router>
-        <Header />
+        <Header token={token} setUser={setUser} />
         <Switch>
           <Route path="/offer/:id">
             <Offer />
           </Route>
           <Route path="/signup">
-            <Signup />
+            <Signup setUser={setUser} />
           </Route>
           <Route path="/login">
-            <Login />
+            <Login setUser={setUser} />
+          </Route>
+          <Route path="/publish">
+            <Publish token={token} />
           </Route>
           <Route path="/">
             <Home />

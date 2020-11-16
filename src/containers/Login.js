@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const history = useHistory();
+
   const handleSubmit = async (event) => {
-    console.log(event);
-    alert("Connected");
+    // console.log(event);
+    // alert("Connected");
     event.preventDefault();
     try {
       const response = await axios.post(
@@ -17,7 +20,16 @@ const Login = () => {
           password: password,
         }
       );
-      console.log(response.data);
+      console.log(response.data); // Retourne bien l'objet créé
+      // On vérifie si le token est retourné dans la console
+      if (response.data.token) {
+        // si oui, on modifie l'état de setUser
+        setUser(response.data.token);
+        // puis on renvoie l'utilisateur vers la homepage
+        history.push("/");
+      } else {
+        alert("Une erreur est survenue");
+      }
     } catch (error) {
       console.log(error.message);
     }
