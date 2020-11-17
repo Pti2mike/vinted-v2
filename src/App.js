@@ -6,6 +6,7 @@ import Offer from "./containers/Offer";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
 import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 import Header from "./components/Header";
 import Cookie from "js-cookie";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -46,6 +47,9 @@ function App() {
           </Route>
           <Route path="/publish">
             <Publish token={token} />
+          </Route>
+          <Route path="/payment">
+            <Payment token={token} />
           </Route>
           <Route path="/">
             <Home />

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 const Offer = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,8 +53,8 @@ const Offer = () => {
               <p></p>
               {data.product_details.map((list, index) => {
                 const keys = Object.keys(list);
-                console.log(list[keys]);
-                console.log(keys); // retourne chaque key du tableau  ==> ["MARQUE"] ["TAILLE"] ["ETAT"] ["COULEUR"] ["EMPLACEMENT"]
+                // console.log(list[keys]);
+                // console.log(keys); // retourne chaque key du tableau  ==> ["MARQUE"] ["TAILLE"] ["ETAT"] ["COULEUR"] ["EMPLACEMENT"]
                 return (
                   <p key={index}>
                     <span>{keys[0]} : </span>
@@ -80,7 +81,12 @@ const Offer = () => {
                   <p>{data.owner.account.username}</p>
                 )}
               </div>
-              <button className="offer-buy" onClick={() => {}}>
+              <button
+                className="offer-buy"
+                onClick={() => {
+                  history.push("/payment");
+                }}
+              >
                 Acheter
               </button>
             </div>

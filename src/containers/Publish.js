@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 const Publish = ({ token }) => {
   const [title, setTitle] = useState("");
@@ -9,7 +10,7 @@ const Publish = ({ token }) => {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [condition, setCondition] = useState("");
-  const [location, setLocation] = useState("");
+  const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
   const [exchange, setExchange] = useState(false);
 
@@ -21,7 +22,7 @@ const Publish = ({ token }) => {
   formData.append("size", size);
   formData.append("color", color);
   formData.append("condition", condition);
-  formData.append("location", location);
+  formData.append("city", city);
   formData.append("price", price);
 
   //   console.log(formData);
@@ -48,13 +49,15 @@ const Publish = ({ token }) => {
       }
       // Retourner l'annonce sinon un alert
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response); // pour obtenir le message provenant du backend
     }
   };
 
-  return (
+  return token ? (
     <div className="publish-wrapper">
-      <h2>Vends ton article</h2>
+      <div>
+        <h2>Vends ton article</h2>
+      </div>
       <form onSubmit={handleSubmit}>
         <div>
           <div>
@@ -62,6 +65,7 @@ const Publish = ({ token }) => {
               <span>Ajoute une photo</span>
               <input
                 type="file"
+                id="file"
                 onChange={(event) => {
                   //   console.log(event);
                   //   console.log(event.target.files);
@@ -72,10 +76,11 @@ const Publish = ({ token }) => {
           </div>
         </div>
         <div>
-          <div>
+          <div className="publish-title">
             <h3>Titre</h3>
             <input
               type="text"
+              value={title}
               placeholder="ex : Sac Céline bleu"
               onChange={(event) => {
                 // console.log(event);
@@ -86,8 +91,11 @@ const Publish = ({ token }) => {
           <div>
             <h3>Décris ton article</h3>
             <textarea
+              value={description}
               name="description"
               placeholder="ex : neuf"
+              cols="30"
+              rows="5"
               onChange={(event) => {
                 // console.log(event);
                 setDescription(event.target.value);
@@ -100,6 +108,7 @@ const Publish = ({ token }) => {
             <h3>Marque</h3>
             <input
               type="text"
+              value={brand}
               placeholder="ex : Céline"
               onChange={(event) => {
                 // console.log(event);
@@ -111,6 +120,7 @@ const Publish = ({ token }) => {
             <h3>Taille</h3>
             <input
               type="text"
+              value={size}
               placeholder="ex : M / 38 / 10"
               onChange={(event) => {
                 // console.log(event);
@@ -122,6 +132,7 @@ const Publish = ({ token }) => {
             <h3>Couleur</h3>
             <input
               type="text"
+              value={color}
               placeholder="ex : Fuschia"
               onChange={(event) => {
                 // console.log(event);
@@ -133,6 +144,7 @@ const Publish = ({ token }) => {
             <h3>Etat</h3>
             <input
               type="text"
+              value={condition}
               placeholder="ex : Neuf avec étiquette"
               onChange={(event) => {
                 // console.log(event);
@@ -144,10 +156,11 @@ const Publish = ({ token }) => {
             <h3>Lieu</h3>
             <input
               type="text"
+              value={city}
               placeholder="ex : Brétigny"
               onChange={(event) => {
                 console.log(event);
-                setLocation(event.target.value);
+                setCity(event.target.value);
               }}
             />
           </div>
@@ -156,7 +169,8 @@ const Publish = ({ token }) => {
           <div>
             <h3>Prix</h3>
             <input
-              type="text"
+              type="number"
+              value={price}
               placeholder="0,00 €"
               onChange={(event) => {
                 // console.log(event);
@@ -180,6 +194,8 @@ const Publish = ({ token }) => {
         </div>
       </form>
     </div>
+  ) : (
+    <Redirect to={{ pathname: "/login", state: { fromPublish: true } }} />
   );
 };
 

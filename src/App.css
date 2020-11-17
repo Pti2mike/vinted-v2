@@ -1,7 +1,8 @@
 .header,
 .item-wrapper,
 .offer-wrapper,
-.offer-item {
+.offer-item,
+.publish-wrapper {
   width: 1280px;
   display: flex;
   padding: 10px;
@@ -257,4 +258,68 @@ button,
   border: solid 2px black;
   display: flex;
   flex-direction: column;
+}
+
+/* Publish page -> CSS to be splitted */
+
+.publish-wrapper {
+  background-color: #ebedee;
+  flex-direction: column;
+}
+
+.publish-wrapper div {
+  width: 1280px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 10px;
+}
+
+/* Checkout component -> CSS to be splitted */
+
+.checkout-wrapper {
+  background-color: #ebedee;
+  width: 1280px;
+  height: 1000px;
+  border: #eaedef 2px solid;
+}
+
+.checkout-container {
+  background-color: white;
+  /* border: blue 2px solid; */
+  width: 500px;
+  align-items: center;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+h4 {
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.checkout-detail {
+  margin-bottom: 25px;
+}
+
+.splitter {
+  border: 1px solid grey;
+  margin: 18px 0;
+}
+
+.payment-step {
+  border: #eaedef solid 1px;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.tobepaid button {
+  border: none;
+  background-color: #00c06d;
+  color: #ffffff;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
 }

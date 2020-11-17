@@ -58,9 +58,9 @@ const Home = () => {
               <Link to={`/offer/${offer._id}`} key={offer._id}>
                 {/* pour récupérer les ID de chaque offre, on utilise {objet._id} qui servira aussi de clé pour la liste d'enfant retournée */}
                 <div className="item-img">
-                  {/* on teste si une photo existe dans l'objet product_pictures et on la renvoie sinon rien */}
-                  {offer.product_pictures[0] && (
-                    <img src={offer.product_pictures[0].secure_url} alt="" />
+                  {/* on teste si une photo existe dans l'objet product_image et on la renvoie sinon rien */}
+                  {offer.product_image && (
+                    <img src={offer.product_image.secure_url} alt="" />
                   )}
                 </div>
                 <div className="item-detail"></div>
