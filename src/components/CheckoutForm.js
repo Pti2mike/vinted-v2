@@ -1,9 +1,16 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useState } from "react";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({
+  productName,
+  totalPrice,
+  protectionFees,
+  shippingFees,
+  price,
+}) => {
   const [accept, setAccept] = useState(false);
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -15,24 +22,25 @@ const CheckoutForm = () => {
       const cardElement = elements.getElement(CardElement);
 
       // Demander la création d'un token via l'API Stripe
+      // en envoyant des données bancaires
       const stripeResponse = await stripe.createToken(cardElement, {
         name: "l'id de l'acheteur",
       });
-      console.log(stripeResponse);
+      // console.log(stripeResponse);
       //Réception du token retourné au client
       const stripeToken = stripeResponse.token.id;
 
-      // Requête vers notre serveur
+      // Requête vers notre serveur dans laquelle on envoie le token reçu
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/payment",
+        "https://vinted-backend-v1.herokuapp.com/payment",
         {
           stripeToken: stripeToken,
-          //   amount: product_price, // A vérifier
-          //   title: product_name, // A vérifier
+          amount: totalPrice,
+          title: productName,
         }
       );
       console.log(response.data);
-      if (response.data) {
+      if (response.data.status === "succeeded") {
         setAccept(true);
       } else {
         alert("Problème!!!!");
@@ -42,49 +50,53 @@ const CheckoutForm = () => {
     }
   };
 
-  return accept ? (
-    <span>Transaction acceptée!</span>
-  ) : (
+  return (
     <div>
-      <div className="checkout-wrapper">
-        <div className="checkout-container">
-          <div className="checkout-summary">
-            <h4>Résumé de la commande</h4>
-            <div className="checkout-detail">
-              <span>Commande = </span>
-              <br />
-              <span>Frais protection acheteurs = </span>
-              <br />
-              <span>Frais de port = </span>
-              <br />
-              <div className="splitter"></div>
-              <span>Total = </span>
-            </div>
-            <div className="tobepaid">
-              <p>
-                Il ne vous reste plus qu'une étape pour vous offrir{" "}
-                <span>[MARQUE]</span>.
-              </p>
-              <br />
-              <p>
-                Vous allez payer <span>[PRIX]</span> (frais de protection et
-                frais de port inclus).
-              </p>
-              <div className="splitter"></div>
-              <form onSubmit={handleSubmit}>
-                <div className="payment-content">
-                  <div className="payment-step">
-                    <CardElement />
-                  </div>
+      {accept ? (
+        <span>Transaction acceptée!</span>
+      ) : (
+        <div>
+          <div className="checkout-wrapper">
+            <div className="checkout-container">
+              <div className="checkout-summary">
+                <h4>Résumé de la commande</h4>
+                <div className="checkout-detail">
+                  <span>Commande = {price.toFixed(2)} €</span>
+                  <br />
+                  <span>Frais protection acheteurs = {protectionFees} €</span>
+                  <br />
+                  <span>Frais de port = {shippingFees} €</span>
+                  <br />
+                  <div className="splitter"></div>
+                  <span>Total = {totalPrice} €</span>
                 </div>
-                <button type="submit" className="pay-button">
-                  Pay
-                </button>
-              </form>
+                <div className="tobepaid">
+                  <p>
+                    Il ne vous reste plus qu'une étape pour vous offrir{" "}
+                    <span>{productName}</span>.
+                  </p>
+                  <br />
+                  <p>
+                    Vous allez payer <span>{totalPrice} €</span> (frais de
+                    protection et frais de port inclus).
+                  </p>
+                  <div className="splitter"></div>
+                  <form onSubmit={handleSubmit}>
+                    <div className="payment-content">
+                      <div className="payment-step">
+                        <CardElement />
+                      </div>
+                    </div>
+                    <button type="submit" className="pay-button">
+                      Payez !
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

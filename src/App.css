@@ -1,19 +1,31 @@
+body {
+  font-family: "Maison Neue";
+}
+
+.loader {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
 .header,
+.hero,
 .item-wrapper,
 .offer-wrapper,
-.offer-item,
-.publish-wrapper {
+.offer-item {
   width: 1280px;
+  margin: 0 auto;
   display: flex;
   padding: 10px;
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  /* margin: auto; */
-  /* border: solid 2px red; */
+}
+
+.header div {
+  margin-right: 20px;
 }
 
 button,
@@ -24,13 +36,12 @@ button,
 
 .logo img {
   height: 30px;
+  margin-right: 20px;
 }
 
 .header-button {
   display: flex;
   justify-content: space-between;
-  /* background-color: green; */
-  width: 400px;
 }
 
 .log-button,
@@ -46,7 +57,16 @@ button,
   border: solid #2cb1ba 2px;
   color: #2cb1ba;
   box-sizing: border-box;
-  /* margin-left: 20px; */
+}
+
+.logout-button {
+  color: white;
+  border: solid tomato 2px;
+  background-color: tomato;
+}
+
+.log-container :first-child {
+  margin-right: 15px;
 }
 
 .sell-button,
@@ -57,24 +77,34 @@ button,
 }
 
 .search {
-  /* border: solid 2px green; */
   background-color: #f5f6f7;
   width: 630px;
   height: 40px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.search-icon {
+  margin-right: 15px;
+  padding: 5px;
+  color: grey;
+  font-size: 20px;
 }
 
 .searchTerm {
-  /* border: lightgreen 2px solid; */
   background-color: #f5f6f7;
   width: 100%;
   border: none;
+  font-size: 20px;
+  outline: none;
 }
 
 .home {
   width: 1280px;
   height: 500px;
-  /* border: solid 2px; */
   object-fit: cover;
 }
 
@@ -82,16 +112,16 @@ button,
   height: 220px;
   width: 360px;
   background-color: #fff;
-  padding: 15px;
+  padding: 25px;
   border-radius: 5px;
   font-size: 34px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   position: absolute;
   box-sizing: border-box;
   top: 150px;
-  left: 15px;
+  left: 125px;
 }
 
 .home-sell button {
@@ -103,7 +133,6 @@ button,
   border-radius: 5px;
   padding: 5px 20px;
   text-decoration: none;
-  /* margin: 50px; */
 }
 
 .home-help {
@@ -113,31 +142,22 @@ button,
 }
 
 .item-wrapper {
-  /* background-color: yellow; */
-  /* déjà en display flex */
-  /* border: solid yellow 2px; */
-  /* justify-content: space-between;
-  flex-shrink: 0; */
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
 .item img {
-  /* border: solid 2px lightblue; */
   height: 360px;
   width: 240px;
   box-sizing: border-box;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
+  object-fit: contain;
 }
 
 .item {
-  /* border: solid 3px blue; */
   margin-bottom: 20px;
-  margin-right: 15px;
+  margin-right: 10px;
 }
-
-/* .item-img {
-  display: flex;
-} */
 
 .item-avatar {
   display: flex;
@@ -156,23 +176,36 @@ button,
   margin-left: 10px;
 }
 
-.item-detail span {
+.item-link {
+  text-decoration: none;
+  color: black;
+}
+
+.item-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-detail :first-child {
   font-weight: bold;
+}
+
+.item-detail :not(:first-child) {
+  color: grey;
 }
 
 /* Offer page -> CSS to be splitted */
 
-.offer-wrapper {
+.offer-container {
   background-color: #eaedef;
+}
+
+.offer-wrapper {
   padding: 30px;
-  /* border: solid blue 2px; */
-  /* display: flex; */
-  /* justify-content: space-around; */
 }
 
 .offer-item {
   margin: 0 auto;
-  /* border: solid aqua 2px; */
   padding: 20px;
   justify-content: space-around;
 }
@@ -187,7 +220,6 @@ button,
   height: 540px;
   width: 350px;
   background-color: #ffffff;
-  /* border: solid black 2px; */
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -195,13 +227,10 @@ button,
 }
 
 .offer-user {
-  /* border: red solid 2px; */
   height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* box-sizing: border-box;
-  flex-wrap: wrap; */
 }
 
 .offer-user span {
@@ -219,9 +248,6 @@ button,
   height: 50px;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  /* border: solid green 1px; */
-  /* width: 100%; */
 }
 
 .offer-avatar img {
@@ -241,53 +267,250 @@ button,
   border-radius: 5px;
   padding: 5px 20px;
   text-decoration: none;
-  /* margin: 50px; */
 }
 
 /* Form page -> CSS to be splitted */
 
 .formulaire {
-  border: blue solid 2px;
-  width: 300px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top: 20px;
   text-align: center;
 }
 
 .form-content {
-  border: solid 2px black;
   display: flex;
   flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.form-content > input {
+  border: none;
+  border-bottom: 1px solid #fcced3;
+  height: 35px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.form-content button {
+  background-color: #2cb1ba;
+  height: 45px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+}
+
+.checkbox-container {
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.checkbox-container > p {
+  text-align: left;
+  color: lightgrey;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.form-content input[type="checkbox"] {
+  transform: scale(2);
+  margin-right: 20px;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.form-content a {
+  color: #2cb1ba;
+  font-size: 12px;
+  text-decoration: none;
+  margin-top: 20px;
 }
 
 /* Publish page -> CSS to be splitted */
 
 .publish-wrapper {
   background-color: #ebedee;
+}
+
+.publish-container {
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
   flex-direction: column;
 }
 
-.publish-wrapper div {
-  width: 1280px;
+.publish-detail-wrapper {
+  background-color: #fff;
+  margin: 20px 0;
+  box-shadow: 0 0 2px grey;
 }
 
 h2 {
   font-size: 26px;
-  margin: 10px;
+  margin-top: 30px;
+}
+
+.file-select {
+  background-color: #fff;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 0 2px grey;
+}
+
+.dashed-preview-image {
+  border: 1px #ebedee dashed;
+  border-radius: 3px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.dashed-preview-image img {
+  height: 90%;
+  margin: 0 10px;
+}
+
+.remove-img-button {
+  position: relative;
+  color: black;
+  background-color: white;
+  right: 60px;
+  bottom: 70px;
+  height: 25px;
+  line-height: 25px;
+  width: 30px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.file-select-dashed {
+  border: 1px dashed #ebedee;
+  border-radius: 3px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-select-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0ab1ba;
+  border-radius: 4px;
+  height: 45px;
+  width: 200px;
+}
+
+.label-file {
+  cursor: pointer;
+  color: #0ab1ba;
+  font-weight: 700;
+}
+
+.label-file > span {
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+.file-sign {
+  font-size: 40px;
+}
+
+.file-add {
+  display: none;
+}
+
+.detail-input {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.publish-detail-wrapper > .detail-input:not(:last-child) {
+  height: 25px;
+  border-bottom: 1px solid #ebedee;
+  vertical-align: center;
+}
+
+.detail-input > h3 {
+  font-weight: 400;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+.detail-input > input {
+  width: 50%;
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  color: #000;
+  font-family: "Maison Neue";
+  font-size: 16px;
+}
+
+.detail-input > textarea {
+  width: 50%;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  outline: none;
+  color: #000;
+  font-family: "Maison Neue";
+  font-size: 16px;
+}
+
+.checkbox-section {
+  width: 50%;
+}
+
+.checkbox-section > input {
+  border: none;
+  border-bottom: 1px solid #ebedee;
+  color: #000;
+  font-family: "Maison Neue";
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.checkbox-input > input {
+  margin-right: 15px;
+}
+
+.publish-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.publish-validation {
+  background-color: #0ab1ba;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  margin: 50px 0;
+  font: inherit;
+  outline: inherit;
+  padding: 12px;
 }
 
 /* Checkout component -> CSS to be splitted */
 
 .checkout-wrapper {
   background-color: #ebedee;
-  width: 1280px;
-  height: 1000px;
+  height: 100vh;
   border: #eaedef 2px solid;
 }
 
 .checkout-container {
   background-color: white;
-  /* border: blue 2px solid; */
   width: 500px;
   align-items: center;
   margin: 20px auto;

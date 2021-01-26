@@ -7,7 +7,7 @@ const Header = ({ token, setUser }) => {
   const history = useHistory();
 
   return (
-    <>
+    <div>
       <header className="header">
         <div
           className="logo"
@@ -33,7 +33,7 @@ const Header = ({ token, setUser }) => {
             {/* On vérifie si le token existe, si oui bouton "Se déconnecter" sinon boutons "S'inscrire & se connecter" */}
             {token ? (
               <button
-                className="log-button"
+                className="log-button logout-button"
                 onClick={() => {
                   setUser(null);
                 }}
@@ -41,24 +41,23 @@ const Header = ({ token, setUser }) => {
                 Se déconnecter
               </button>
             ) : (
-              <>
+              <div style={{ display: "flex" }}>
                 <Link className="log-button" to="/signup">
                   S'inscrire
                 </Link>
                 <Link className="log-button" to="/login">
                   Se connecter
                 </Link>
-              </>
+              </div>
             )}
           </div>
-          <div>
-            <Link className="sell-button" to="/publish">
-              Vends tes articles
-            </Link>
-          </div>
+
+          <Link className="sell-button" to="/publish">
+            Vends tes articles
+          </Link>
         </div>
       </header>
-    </>
+    </div>
   );
 };
 

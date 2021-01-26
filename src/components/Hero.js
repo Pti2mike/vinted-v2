@@ -6,7 +6,7 @@ const Hero = () => {
   const history = useHistory();
 
   return (
-    <div className="header">
+    <div className="hero">
       <img src={Home} alt="home" className="home" />
       <div className="home-sell">
         <p>Prêts à faire du tri dans vos placards ?</p>

@@ -14,7 +14,8 @@ const Login = ({ setUser }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        // "https://lereacteur-vinted-api.herokuapp.com/user/login",
+        "https://vinted-backend-v1.herokuapp.com/user/login",
         {
           email: email,
           password: password,
@@ -37,7 +38,7 @@ const Login = ({ setUser }) => {
 
   return (
     <div className="formulaire">
-      <h1>Login</h1>
+      <h2>Se connecter</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-content">
           <input
@@ -54,7 +55,7 @@ const Login = ({ setUser }) => {
               setPassword(event.target.value);
             }}
           />
-          <input type="submit" value="Se connecter" />
+          <button type="submit">Se connecter</button>
         </div>
       </form>
     </div>

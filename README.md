@@ -1,3 +1,8 @@
+# Todos
+
+- Add modal form when trying to connect
+- Add some filters
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
