@@ -36,7 +36,7 @@ const Publish = ({ token }) => {
     // Requête axios pour envoyer les données à l'API
     try {
       const response = await axios.post(
-        "https://vinted-backend-v1.herokuapp.com/offer/publish",
+        "https://vinted-backend-v1.vercel.app/offer/publish",
         formData,
         {
           headers: {

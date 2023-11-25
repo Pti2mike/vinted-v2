@@ -19,7 +19,7 @@ const Offer = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://vinted-backend-v1.herokuapp.com/offer/${id}`
+          `https://vinted-backend-v1.vercel.app/offer/${id}`
         );
         // console.log(response.data); // Retourne l'objet renseigné dans :id
         setData(response.data);

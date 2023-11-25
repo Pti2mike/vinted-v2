@@ -17,7 +17,7 @@ const Signup = ({ setUser }) => {
     try {
       const response = await axios.post(
         // "https://lereacteur-vinted-api.herokuapp.com/user/signup"
-        "https://vinted-backend-v1.herokuapp.com/user/signup",
+        "https://vinted-backend-v1.vercel.app/user/signup",
         {
           username: username,
           email: email,

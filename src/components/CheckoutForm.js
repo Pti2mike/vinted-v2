@@ -32,7 +32,7 @@ const CheckoutForm = ({
 
       // Requête vers notre serveur dans laquelle on envoie le token reçu
       const response = await axios.post(
-        "https://vinted-backend-v1.herokuapp.com/payment",
+        "https://vinted-backend-v1.vercel.app/payment",
         {
           stripeToken: stripeToken,
           amount: totalPrice,

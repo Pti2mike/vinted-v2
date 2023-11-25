@@ -14,7 +14,7 @@ const Home = () => {
       try {
         // A terme, je devrai mettre le lien de mon URL pour le backend
         const response = await axios.get(
-          "https://vinted-backend-v1.herokuapp.com/offers" // Il faut gérer le problème de l'avatar qui n'existe pas dans le modèle du backend
+          "https://vinted-backend-v1.vercel.app/offers" // Il faut gérer le problème de l'avatar qui n'existe pas dans le modèle du backend
         );
         // console.log(response.data); // Je vérifie que je récupère les données du backend qui est un objet
         setData(response.data);
